@@ -1,0 +1,8 @@
+My guide: https://www.youtube.com/watch?v=hcA_GuZHyZM&t=315s
+
+Also this even though it is "no longer maintained": https://rustwasm.github.io/docs/book/
+
+For compiling from Rust to WebAssembly: https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Rust_to_Wasm
+- ^ For this article I'm doing "Build a part of an application — using Rust in an existing JavaScript frontend." so it's a good ref point.
+
+Guy doing basically exactly what I'm trying to build: https://www.youtube.com/watch?v=Mj6hTGo0oGc

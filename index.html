@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>rust_wasm_markdown example</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <h1>TESTING MY RUST-POWERED MARKDOWN PARSER!!!</h1>
+    <!-- So, what I want here is a just a simple text input box with a button.
+    And then beneath it is another box but it's not interactable and there is no text
+    (this is my render panel for making sure that the RUST parser works good).
+    NOTE: Do not bother at all with styling here. Remember what I'm building; this is an add-on feature for my CMDE project. -->
+
+    <!-- 1. The Text(well, Markdown)-Input Box: -->
+    <form>
+      <textarea id="markdownInput" class="displayBox"></textarea>
+          
+    </form>
+
+
+
+
+
+
+
+    <script type="module">
+      import init, { greet } from "../pkg/rust_wasm_markdown.js";
+
+      init().then(() => {
+        greet("WebAssembly");
+      });
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,14 @@
+[package]
+name = "rust-wasm-markdown"
+version = "0.1.0"
+authors = ["Timan Zheng <timanzproper@gmail.com>"]
+description = "Building a RUST-powered Markdown Parser w/ wasm-pack"
+license = "Honestly, I have no idea"
+repository = "https://github.com/timan-z/RUST-WASM-Markdown-Parser"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
