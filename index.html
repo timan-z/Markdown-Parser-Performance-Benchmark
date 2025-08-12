@@ -14,24 +14,33 @@
     NOTE: Do not bother at all with styling here. Remember what I'm building; this is an add-on feature for my CMDE project. -->
 
     <!-- 1. The Text(well, Markdown)-Input Box: -->
-    <form>
+    <form id="mdInputWrapper">
       <textarea id="markdownInput" class="displayBox"></textarea>
-          
+      <button id="renderBtn" type="button">Click to Render</button>
     </form>
 
-
-
-
-
-
+    <!-- 2. The Render Box: -->
+    <div id="renderBox"> ... </div>
 
     <script type="module">
-      import init, { greet } from "../pkg/rust_wasm_markdown.js";
+      import init, { greet, parse_markdown } from "../pkg/rust_wasm_markdown.js";
 
       init().then(() => {
         greet("WebAssembly");
       });
-    </script>
 
+      // Event listener for the renderBtn:
+      document.getElementById("renderBtn").addEventListener("click", () => {
+        
+        
+        // This is where I will call the RUST, WASM or whatever functions to render the HTML (From the RUST parser):
+        const mdInput = document.getElementById("markdownInput").value;
+        console.log("DEBUG: The value of mdInput => ", mdInput);
+        console.log("TO-DO: Insert function call for the RUST-powered parser (or whatever).");
+
+        const htmlOutput = parse_markdown(mdInput);
+        document.getElementById("renderBox").innerHTML = htmlOutput;
+      });
+    </script>
   </body>
 </html>

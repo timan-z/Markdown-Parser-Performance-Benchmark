@@ -6,3 +6,6 @@ For compiling from Rust to WebAssembly: https://developer.mozilla.org/en-US/docs
 - ^ For this article I'm doing "Build a part of an application — using Rust in an existing JavaScript frontend." so it's a good ref point.
 
 Guy doing basically exactly what I'm trying to build: https://www.youtube.com/watch?v=Mj6hTGo0oGc
+^ or, on second thought, maybe I should just use an existing library (my main end-goal is getting Version Control working anyways).
+
+Like I should use this instead: https://github.com/kivikakk/comrak
