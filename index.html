@@ -18,6 +18,11 @@
       <textarea id="markdownInput" class="displayBox"></textarea>
       <button id="renderBtn" type="button">Click to Render</button>
       <button id="largeMDTextBtn" type="button">Click to test w/ large Markdown File</button>
+      
+
+      <button id="testMarkedBtn" type="button"">Test Marked Button</button>
+
+
     </form>
 
     <!-- 2. The Render Box: -->
@@ -42,14 +47,15 @@
         const htmlOutput = parse_markdown(mdInput);
         document.getElementById("renderBox").innerHTML = htmlOutput;
       });
-      
+
       // Event listener for the largeMDTextBtn:
       document.getElementById("largeMDTextBtn").addEventListener("click", () => {
-        const bigMDText = "# Title\n" + ("**Bold text** *Italics Text* ")
-
+        //const bigMDText = "# Title\n" + ("**Bold text** *Italics Text* ")
+        console.log("I'm fat.");
       });
-
-
     </script>
+
+    <script type="module" src="./utility/benchmark.js"></script>
+
   </body>
 </html>
