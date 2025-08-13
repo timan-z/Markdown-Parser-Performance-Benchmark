@@ -17,6 +17,7 @@
     <form id="mdInputWrapper">
       <textarea id="markdownInput" class="displayBox"></textarea>
       <button id="renderBtn" type="button">Click to Render</button>
+      <button id="largeMDTextBtn" type="button">Click to test w/ large Markdown File</button>
     </form>
 
     <!-- 2. The Render Box: -->
@@ -24,15 +25,15 @@
 
     <script type="module">
       import init, { greet, parse_markdown } from "../pkg/rust_wasm_markdown.js";
+      //import MarkdownIt from "markdown-it";
+      //import markdownItTaskLists from "markdown-it-task-lists";
 
       init().then(() => {
-        greet("WebAssembly");
+        greet("Welcome to this benchmark webpage for testing markdown parsing speed between RUST's Comrak parser vs marked, marked-it.");
       });
-
+      
       // Event listener for the renderBtn:
       document.getElementById("renderBtn").addEventListener("click", () => {
-        
-        
         // This is where I will call the RUST, WASM or whatever functions to render the HTML (From the RUST parser):
         const mdInput = document.getElementById("markdownInput").value;
         console.log("DEBUG: The value of mdInput => ", mdInput);
@@ -41,6 +42,14 @@
         const htmlOutput = parse_markdown(mdInput);
         document.getElementById("renderBox").innerHTML = htmlOutput;
       });
+      
+      // Event listener for the largeMDTextBtn:
+      document.getElementById("largeMDTextBtn").addEventListener("click", () => {
+        const bigMDText = "# Title\n" + ("**Bold text** *Italics Text* ")
+
+      });
+
+
     </script>
   </body>
 </html>

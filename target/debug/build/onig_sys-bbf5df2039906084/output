@@ -1,0 +1,111 @@
+cargo:rerun-if-env-changed=RUSTONIG_DYNAMIC_LIBONIG
+cargo:rerun-if-env-changed=RUSTONIG_STATIC_LIBONIG
+cargo:rerun-if-env-changed=RUSTONIG_SYSTEM_LIBONIG
+OUT_DIR = Some(C:\Users\timan\Desktop\rust-wasm-markdown\target\debug\build\onig_sys-bbf5df2039906084\out)
+OPT_LEVEL = Some(0)
+TARGET = Some(x86_64-pc-windows-msvc)
+cargo:rerun-if-env-changed=VCINSTALLDIR
+VCINSTALLDIR = None
+cargo:rerun-if-env-changed=VSTEL_MSBuildProjectFullPath
+VSTEL_MSBuildProjectFullPath = None
+cargo:rerun-if-env-changed=VSCMD_ARG_VCVARS_SPECTRE
+VSCMD_ARG_VCVARS_SPECTRE = None
+cargo:rerun-if-env-changed=WindowsSdkDir
+WindowsSdkDir = None
+cargo:rerun-if-env-changed=WindowsSDKVersion
+WindowsSDKVersion = None
+cargo:rerun-if-env-changed=LIB
+LIB = None
+PATH = Some(C:\Users\timan\Desktop\rust-wasm-markdown\target\debug\deps;C:\Users\timan\Desktop\rust-wasm-markdown\target\debug;C:\Users\timan\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\x86_64-pc-windows-msvc\lib;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files\Java\jdk-17\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\TDM-GCC-64\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Docker\Docker\resources\bin;C:\php-8.2.7;C:\FPC\3.2.2\bin\i386-Win32;C:\MinGW\bin;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\jflex-1.9.1\bin;C:\GNAT\2021\bin;C:\Program Files\PostgreSQL\17\bin;C:\Program Files\Go\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\timan\.cargo\bin;C:\GNATSTUDIO\bin;C:\Users\timan\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\timan\AppData\Local\Programs\Python\Python311\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\timan\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\timan\AppData\Local\Programs\Python\Python38\;C:\Users\timan\AppData\Local\Microsoft\WindowsApps;C:\Users\timan\AppData\Local\atom\bin;C:\MinGW\bin;C:\Users\timan\AppData\Local\Microsoft\WindowsApps;C:\Users\timan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\timan\AppData\Local\Android\Sdk\platform-tools;C:\Users\timan\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\timan\AppData\Local\GitHubDesktop\bin;C:\Program Files\Tesseract-OCR;C:\ytdlp;C:\Users\timan\go\bin;C:\Users\timan\AppData\Roaming\npm;;C:\Users\timan\.rustup\toolchains\stable-x86_64-pc-windows-msvc\bin)
+cargo:rerun-if-env-changed=INCLUDE
+INCLUDE = None
+HOST = Some(x86_64-pc-windows-msvc)
+cargo:rerun-if-env-changed=CC_x86_64-pc-windows-msvc
+CC_x86_64-pc-windows-msvc = None
+cargo:rerun-if-env-changed=CC_x86_64_pc_windows_msvc
+CC_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=HOST_CC
+HOST_CC = None
+cargo:rerun-if-env-changed=CC
+CC = None
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+CARGO_CFG_TARGET_FEATURE = Some(cmpxchg16b,fxsr,sse,sse2,sse3)
+DEBUG = Some(true)
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+cargo:rerun-if-env-changed=HOST_CFLAGS
+HOST_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64_pc_windows_msvc
+CFLAGS_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64-pc-windows-msvc
+CFLAGS_x86_64-pc-windows-msvc = None
+CARGO_ENCODED_RUSTFLAGS = Some()
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+regexec.c
+regerror.c
+regparse.c
+regext.c
+regcomp.c
+reggnu.c
+regenc.c
+regsyntax.c
+regtrav.c
+regversion.c
+st.c
+onig_init.c
+unicode.c
+ascii.c
+utf8.c
+utf16_be.c
+utf16_le.c
+utf32_be.c
+utf32_le.c
+euc_jp.c
+sjis.c
+iso8859_1.c
+iso8859_2.c
+iso8859_3.c
+iso8859_4.c
+iso8859_5.c
+iso8859_6.c
+iso8859_7.c
+iso8859_8.c
+iso8859_9.c
+iso8859_10.c
+iso8859_11.c
+iso8859_13.c
+iso8859_14.c
+iso8859_15.c
+iso8859_16.c
+euc_tw.c
+euc_kr.c
+big5.c
+gb18030.c
+koi8_r.c
+cp1251.c
+euc_jp_prop.c
+sjis_prop.c
+unicode_unfold_key.c
+unicode_fold1_key.c
+unicode_fold2_key.c
+unicode_fold3_key.c
+cargo:rerun-if-env-changed=AR_x86_64-pc-windows-msvc
+AR_x86_64-pc-windows-msvc = None
+cargo:rerun-if-env-changed=AR_x86_64_pc_windows_msvc
+AR_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=HOST_AR
+HOST_AR = None
+cargo:rerun-if-env-changed=AR
+AR = None
+cargo:rerun-if-env-changed=ARFLAGS
+ARFLAGS = None
+cargo:rerun-if-env-changed=HOST_ARFLAGS
+HOST_ARFLAGS = None
+cargo:rerun-if-env-changed=ARFLAGS_x86_64_pc_windows_msvc
+ARFLAGS_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=ARFLAGS_x86_64-pc-windows-msvc
+ARFLAGS_x86_64-pc-windows-msvc = None
+cargo:rustc-link-search=native=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\atlmfc\lib\x64
+cargo:rustc-link-lib=static=onig
+cargo:rustc-link-search=native=C:\Users\timan\Desktop\rust-wasm-markdown\target\debug\build\onig_sys-bbf5df2039906084\out

@@ -1,0 +1,7 @@
+C:\Users\timan\Desktop\rust-wasm-markdown\target\debug\deps\clap-f846bb0ba40e69d9.d: C:\Users\timan\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clap-4.5.45\src\lib.rs C:\Users\timan\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clap-4.5.45\src\../examples/demo.rs C:\Users\timan\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clap-4.5.45\src\../examples/demo.md
+
+C:\Users\timan\Desktop\rust-wasm-markdown\target\debug\deps\libclap-f846bb0ba40e69d9.rmeta: C:\Users\timan\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clap-4.5.45\src\lib.rs C:\Users\timan\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clap-4.5.45\src\../examples/demo.rs C:\Users\timan\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clap-4.5.45\src\../examples/demo.md
+
+C:\Users\timan\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clap-4.5.45\src\lib.rs:
+C:\Users\timan\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clap-4.5.45\src\../examples/demo.rs:
+C:\Users\timan\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clap-4.5.45\src\../examples/demo.md:
