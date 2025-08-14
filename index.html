@@ -19,7 +19,7 @@
       <div id="mdInputWrapper">
         <textarea id="markdownInput" class="displayBox"></textarea>
         <button id="renderBtn" type="button" class="button"><b>Click to Render</b> (Markdown above -> Render Panel on the RHS!)</button>
-        <button id="benchmarksBtn" type="button" class="button"><b>Click to Run Benchmarks</b></button>
+        <button id="benchmarksBtn" type="button" class="button"><b>Click to Run Benchmarks</b> (Warning - may take <i>very</i> long!)</button>
       </div>
 
       <!-- 2. The Render Box (Area): -->
@@ -32,7 +32,27 @@
 
     <!-- Going to have a box beneath the main interactive area of the webpage where info about the benchmarks appear after they were run: -->
     <div class="wrapper">
-      <div id="bmResWrapper"></div>
+      <div id="bmResWrapper">
+        <!-- Drafting up a Test table here to use as a reference for when I programmatically create it in benchmark.js: -->
+        <!--<table>
+          <thead>
+            <tr>
+              <th>Unit Test Type</th>
+              <th>Comrak (RUST)</th>
+              <th>Marked (JS)</th>
+              <th>MarkdownIt (JS)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>smallHeadingV1</td>
+              <td>17.2ms</td>
+              <td>30.3ms</td>
+              <td>28.2ms</td>
+            </tr>
+          </tbody>
+        </table>-->
+      </div>
     </div>
 
     <!-- Linking ./utility/benchmark.js where all the JavaScript functions are: -->

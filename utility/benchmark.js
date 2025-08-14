@@ -185,14 +185,55 @@ document.getElementById("renderBtn").addEventListener("click", () => {
 
 // Event listener for the benchmarksBtn:
 document.getElementById("benchmarksBtn").addEventListener("click", () => {
-    /* Here's how I'm going to have this work:
-    */
+    const runCount = 100;
+    const results = [];
+    for(const [testName, mdText] of Object.entries(tests)) {
+        /* TO-DO: Going to want to make it so that each testName will be clickable and when you click it,
+        it'll insert the mdText of that Unit Test into the Markdown Input Box. (Not sure if "mdText" will be useful for that - probably?) */
 
-    console.log("The value of tests.[whatever] => ", tests.tableV3);
-    document.getElementById("markdownInput").innerHTML = tests.tableV3;
-    document.getElementById("renderBtn").click; 
+        let comrakTimes = [];
+        let markedTimes = [];
+        let markdownItTimes = [];
+        // Warm-up run (JIT & WASM initialization).
+        runParsers(mdText);
+        // Going to have each parser run the test 100 times (and this will then be averaged out later).
+        for(let i = 0; i < runCount; i++) {
+            let res = runParsers(mdText);
+            comrakTimes.push(res.comrakS);
+            markedTimes.push(res.markedS);
+            markdownItTimes.push(res.markdownItS);
+        }
+        // Averaging the results:
+        const avg = arr => arr.reduce((a,b) => a+b, 0) / arr.length;
+        results.push({
+            testName: testName,
+            comrakSpeed: avg(comrakTimes).toFixed(2),
+            markedSpeed: avg(markedTimes).toFixed(2),
+            markdownItSpeed: avg(markdownItTimes).toFixed(2),
+        });
+    }
 
-    //document.getElementById("renderBox")
+    let resTable =
+    `<table>
+        <thead>
+        <tr>
+            <th>Unit Test</th>
+            <th>Comrak (RUST)</th>
+            <th>Marked (JS)</th>
+            <th>MarkdownIt (JS)</th>
+        </tr>
+    </thead>
+    <tbody>`;
+
+    for(const res of results) {
+        resTable +=
+        `<tr>
+            <td>${res.testName}</td>
+            <td>${res.comrakSpeed}<b>ms</b></td>
+            <td>${res.markedSpeed}<b>ms</b></td>
+            <td>${res.markdownItSpeed}<b>ms</b></td>
+        </tr>`;
+    }
+    resTable += `</tbody></table>`;
+    document.getElementById("bmResWrapper").innerHTML = resTable;
 });
-
-
