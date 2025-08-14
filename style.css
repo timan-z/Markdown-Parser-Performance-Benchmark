@@ -12,6 +12,12 @@
     display:flex;
     flex-direction:column;
 }
+#bmResWrapper {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
 .displayBox {
     width:100%;
     height:100%;

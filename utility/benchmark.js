@@ -4,6 +4,7 @@ import MarkdownIt from "https://cdn.skypack.dev/markdown-it";
 
 await init(); // NOTE: VERY IMPORTANT! Load and init WASM or else I won't be able to call any of the RUST functions!!!
 
+// My Test Cases (covers bare-essentials Markdown formatting and additional features including ones specific to my CMDE project):
 const tests = {
     // 1. HEADING:
     smallHeadingV1: "# Small Heading",
@@ -64,9 +65,9 @@ const tests = {
     largeLink: ("[Link to Google](https://www.google.com/) ".repeat(5000)),
 
     // 10. IMAGES (CLOUDINARY):
-    smallLink: "![Image](https://res.cloudinary.com/dsduz3inl/image/upload/v1750292077/krusty_s5hekd.png)",
-    mediumLink: ("![Image](https://res.cloudinary.com/dsduz3inl/image/upload/v1750292077/krusty_s5hekd.png) ".repeat(100)),
-    largeLink:  ("![Image](https://res.cloudinary.com/dsduz3inl/image/upload/v1750292077/krusty_s5hekd.png) ".repeat(1000)),
+    smallImage: "![Image](https://res.cloudinary.com/dsduz3inl/image/upload/v1750292077/krusty_s5hekd.png)",
+    mediumImage: ("![Image](https://res.cloudinary.com/dsduz3inl/image/upload/v1750292077/krusty_s5hekd.png) ".repeat(100)),
+    largeImage:  ("![Image](https://res.cloudinary.com/dsduz3inl/image/upload/v1750292077/krusty_s5hekd.png) ".repeat(1000)),
     
     // 11. BLOCKQUOTES:
     smallBlockQ: "> ihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream",
@@ -80,8 +81,8 @@ const tests = {
 
     // 13. LINE BREAKS:
     smallLine: "---",
-    mediumBreaks: ("---\n".repeat(100)) + "---",
-    largeBreaks: ("---\n".repeat(5000)) + "---",
+    mediumLine: ("---\n".repeat(100)) + "---",
+    largeLine: ("---\n".repeat(5000)) + "---",
 
     // 14. Mixed cases (and nested formatting):
     smallMixed: "> # **~~Bold Strikethrough~~** with `inline code` and *italics*",
@@ -131,6 +132,7 @@ const tests = {
     `,
 }
 
+// Function to run the parsers (Comrak, marked, and markdown-it):
 function runParsers(mdText) {
     let startC = performance.now();
     const htmlOutput = parse_markdown(mdText); // Comrak will be used for the parsing, but I'm also going to record the time it took.
@@ -163,6 +165,12 @@ function runParsers(mdText) {
     return returnRes;
 }
 
+// Function to insert Unit Test's Testing Markdown content into the Markdown Input Box (so you can manually test it yourself):
+function insertTestMD(testName) {
+    const testContent = tests[testName];
+    document.getElementById("markdownInput").innerHTML = testContent;    
+}
+
 // Event listener for the renderBtn:
 document.getElementById("renderBtn").addEventListener("click", () => {
     // Just for simply rendering whatever Markdown text is currently present in the LHS box into the RHS box (render panel):
@@ -187,6 +195,8 @@ document.getElementById("renderBtn").addEventListener("click", () => {
 document.getElementById("benchmarksBtn").addEventListener("click", () => {
     const runCount = 100;
     const results = [];
+    const avg = arr => arr.reduce((a,b) => a+b, 0) / arr.length;
+
     for(const [testName, mdText] of Object.entries(tests)) {
         /* TO-DO: Going to want to make it so that each testName will be clickable and when you click it,
         it'll insert the mdText of that Unit Test into the Markdown Input Box. (Not sure if "mdText" will be useful for that - probably?) */
@@ -204,7 +214,6 @@ document.getElementById("benchmarksBtn").addEventListener("click", () => {
             markdownItTimes.push(res.markdownItS);
         }
         // Averaging the results:
-        const avg = arr => arr.reduce((a,b) => a+b, 0) / arr.length;
         results.push({
             testName: testName,
             comrakSpeed: avg(comrakTimes).toFixed(2),
@@ -214,7 +223,7 @@ document.getElementById("benchmarksBtn").addEventListener("click", () => {
     }
 
     let resTable =
-    `<table>
+    `<table id="resTable">
         <thead>
         <tr>
             <th>Unit Test</th>
@@ -223,17 +232,38 @@ document.getElementById("benchmarksBtn").addEventListener("click", () => {
             <th>MarkdownIt (JS)</th>
         </tr>
     </thead>
-    <tbody>`;
+    <tbody id="resBody">`;
 
+    let finalComrakTimes = [];
+    let finalMarkedTimes = [];
+    let finalMDItTimes = [];
     for(const res of results) {
         resTable +=
         `<tr>
-            <td>${res.testName}</td>
+            <td><button class="unitTestBtn">${res.testName}</button></td>
             <td>${res.comrakSpeed}<b>ms</b></td>
             <td>${res.markedSpeed}<b>ms</b></td>
             <td>${res.markdownItSpeed}<b>ms</b></td>
         </tr>`;
+        finalComrakTimes.push(res.comrakSpeed);
+        finalMarkedTimes.push(res.markedSpeed);
+        finalMDItTimes.push(res.markdownItSpeed);
     }
-    resTable += `</tbody></table>`;
+    resTable += `</tbody></table><div id="resSummary"></div>`;
     document.getElementById("bmResWrapper").innerHTML = resTable;
+
+    document.getElementById("resSummary").innerHTML = 
+    `<b>Comrak (RUST)</b> Average Runtime: ${avg(finalComrakTimes).toFixed(2)}<br>
+    <b>Marked (JavaScript)</b> Average Runtime: ${avg(finalMarkedTimes).toFixed(2)}<br>
+    <b>Markdown-It (JavaScript)</b> Average Runtime: ${avg(finalMDItTimes).toFixed(2)}<br>`;
+});
+
+// Event listeners for the buttons inside the table that gets generated after pressing the benchmarksBtn button (they'll "bubble up to bmResWrapper"):
+document.getElementById("bmResWrapper").addEventListener("click", (e) => {
+    const btn = e.target.closest("button.unitTestBtn");
+    if (!btn) return;
+
+    // Determine what Unit Test button was clicked and then call function "insertTestMD":
+    const testNameFromBtn = btn.textContent.trim();
+    insertTestMD(testNameFromBtn);
 });
