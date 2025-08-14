@@ -2,7 +2,7 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>rust_wasm_markdown example</title>
+    <title>Rust vs JS Markdown Parsers</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -19,6 +19,7 @@
       <div id="mdInputWrapper">
         <textarea id="markdownInput" class="displayBox"></textarea>
         <button id="renderBtn" type="button" class="button"><b>Click to Render</b> (Markdown above -> Render Panel on the RHS!)</button>
+        <button id="benchmarksBtn" type="button" class="button"><b>Click to Run Benchmarks</b></button>
       </div>
 
       <!-- 2. The Render Box (Area): -->
@@ -27,47 +28,15 @@
         <div id="renderBoxInfo"></div>
       </div>
     </div>
+    <hr>
 
-    <script type="module">
-      import init, { greet, parse_markdown } from "../pkg/rust_wasm_markdown.js";
-      import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-      import MarkdownIt from "https://cdn.skypack.dev/markdown-it";
+    <!-- Going to have a box beneath the main interactive area of the webpage where info about the benchmarks appear after they were run: -->
+    <div class="wrapper">
+      <div id="bmResWrapper"></div>
+    </div>
 
-      await init(); // NOTE: VERY IMPORTANT! Load and init WASM or else I won't be able to call any of the RUST functions!!!
-
-      // Event listener for the renderBtn:
-      document.getElementById("renderBtn").addEventListener("click", () => {
-        // Just for simply rendering whatever Markdown text is currently present in the LHS box into the RHS box (render panel):
-        const mdInput = document.getElementById("markdownInput").value;
-        let startC = performance.now();
-        const htmlOutput = parse_markdown(mdInput); // Comrak will be used for the parsing, but I'm also going to record the time it took.
-        // DEBUG:+NOTE: ^ Will assigning value cause mileage? I discard the values when measuring time for the speed for marked and markdown-it -- NOTE this in my README.
-        let comrakSpeed = performance.now() - startC;
-        let comrakSpeedR = comrakSpeed.toFixed(2);
-        document.getElementById("renderBox").innerHTML = htmlOutput;
-
-        /* comrakSpeed will hold the ms speed it took for Comrak to compile the markdown code.
-        Under the render panel, I'm going to have text that appears showing how long it for Comrak to render the
-        markdown as opposed to marked and markdown-it (two JS-powered markdown parsers). */
-        function getRenderTime(func) {
-          const start = performance.now();
-          func();
-          return performance.now() - start;
-        }
-        // Testing marked (JS):
-        let markedSpeed = getRenderTime(() => marked(mdInput));
-        let markedSpeedR = markedSpeed.toFixed(2);
-        // Testing markdown-it (JS):
-        const mdParser = new MarkdownIt();
-        let markdownItSpeed = getRenderTime(() => mdParser.render(mdInput));
-        let markdownItSpeedR = markdownItSpeed.toFixed(2);
-
-        const renderPanelInfo = `|<b>[RUST] Comrak Speed:</b> ${comrakSpeedR}<b>ms</b> (${comrakSpeed})<br>|<b>[JS] marked Speed:</b> ${markedSpeedR}<b>ms</b> (${markedSpeed})<br>|<b>[JS] markdown-it Speed:</b> ${markdownItSpeedR}<b>ms</b> (${markdownItSpeed})`;
-        document.getElementById("renderBoxInfo").innerHTML = renderPanelInfo;
-      });
-    </script>
+    <!-- Linking ./utility/benchmark.js where all the JavaScript functions are: -->
+    <script type="module" src="./utility/benchmark.js"></script>
 
   </body>
 </html>
-
-<!--<script type="module" src="./utility/benchmark.js"></script>-->
