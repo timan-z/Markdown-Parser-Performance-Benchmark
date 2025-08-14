@@ -1,7 +1,14 @@
 
+.wrapper {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-evenly;
+    margin-top:20px;
+}
 #mdInputWrapper {
     width:500px;
-    height:250px;
+    height:500px;
     display:flex;
     flex-direction:column;
 }
@@ -11,11 +18,16 @@
     font-size:14px;
     resize:none;
 }
+#renderBoxWrapper {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-evenly;
+}
 #renderBox {
     width:500px;
-    height:250px;
+    height:500px;
     border:2px solid red;
-    margin-top:20px;
     overflow-y:auto;
     background:beige;
 }

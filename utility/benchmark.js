@@ -32,4 +32,4 @@ function runMarkedItTest() {
     console.log("**Inside the runMarkedItTest() function...**");
 }
 
-document.getElementById("testMarkedBtn").addEventListener("click", () => runMarkedTest());
+//document.getElementById("testMarkedBtn").addEventListener("click", () => runMarkedTest());
