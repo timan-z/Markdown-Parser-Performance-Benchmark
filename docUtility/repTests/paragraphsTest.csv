@@ -1,0 +1,4 @@
+Input Size, Comrak (RUST) Avg Time (ms), Marked (JS) Avg Time (ms), Markdown-It (JS) Avg Time (ms)
+small, 0.02, 0.02, 0.03
+medium, 0.28, 0.70, 0.28
+large, 11.53, 34.07, 11.63
