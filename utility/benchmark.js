@@ -6,7 +6,7 @@ await init(); // NOTE: VERY IMPORTANT! Load and init WASM or else I won't be abl
 
 // My Test Cases (covers bare-essentials Markdown formatting and additional features including ones specific to my CMDE project):
 const tests = {
-    // 1. HEADING:
+    // 1. HEADING [Core Markdown]:
     smallHeadingV1: "# Small Heading",
     smallHeadingV2: "# Small Heading\n## Small Heading\n### Small Heading\n#### Small Heading\n##### Small Heading\n###### Small Heading", 
     /* ^ NOTE: Includes hard breaks which may affect RUST parser's speed -- RUST is normally *always* fastest excluding the occasion where
@@ -14,36 +14,36 @@ const tests = {
     mediumHeading: "# Heading\n" + ("### Heading\n".repeat(99)) + "##### Heading",
     largeHeading: "# Heading\n" + ("#### Heading\n".repeat(5000)) + "###### Heading",
 
-    // 2. PARAGRAPHS (normal plain text separated by two line breaks):
+    // 2. PARAGRAPHS (normal plain text separated by two line breaks) [Core Markdown]:
     smallParagraphs: "ihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream\n\nihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream",
     mediumParagraphs: ("ihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream\n\nihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream".repeat(99)),
     largeParagraphs: ("ihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream\n\nihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream".repeat(5000)),
     
-    // 3. BOLD:
+    // 3. BOLD [Core Markdown]:
     smallBold: "**bald**",
     mediumBold: ("**bald** ".repeat(100)),
     largeBold: ("**bald** ".repeat(5000)),
 
-    // 4. ITALICS:
+    // 4. ITALICS [Core Markdown]:
     smallItalics: "~~Squiggly Line~~",
     mediumItalics: ("~~Squiggly Line~~".repeat(100)),
     largeItalics: ("~~Squiggly Line~~".repeat(5000)),
     
-    // 5. UNORDERED LIST:
+    // 5. UNORDERED LIST [Core Markdown]:
     smallUnList: "- Whopper\n-Whopper\n-Whopper\n-Whopper\n-Flame-grilled Taste\n-Perfect Toppers\n-Lettuce\n-Mayo\n-Pickle\n-Ketchup",
     mediumUnList: ("- Whopper\n-Whopper\n".repeat(100)) + "- Whopper",
     largeUnList: ("- Whopper\n-Whopper\n".repeat(5000)) + "- Whopper",
-    // 6. ORDERED LIST:
+    // 6. ORDERED LIST [Core Markdown]:
     smallOrList: "1. Un\n2. Deux\n3. Trois\n4. Quatre\n5. Cinq\n6. Six\n7. Sept\n8. Huit\n9. Neuf\n10. Dix",
     mediumOrList: ("1. Un\n2. Deux\n".repeat(100)) + "3. Trois",
     largeOrList: ("1. Un\n2. Deux\n".repeat(5000)) + "3. Trois",
 
-    // 7. INLINE CODE (stuff like `code`, single-line code boxes):
+    // 7. INLINE CODE (stuff like `code`, single-line code boxes) [Core Markdown]:
     smallInlineCode: "Some `inline code` for testing.",
     mediumInlineCode: ("`const x = 42;` and then some.\n".repeat(100)),
     largeInlineCode: ("`const x = 46;` and then some.\n".repeat(5000)),
 
-    // 8. CODE BLOCKS:
+    // 8. CODE BLOCKS [Core Markdown]:
     smallCodeBlock: "```\nconsole.log('Hello World');\n```",
     mediumCodeBlock:
     ("```\n" +
@@ -59,48 +59,48 @@ const tests = {
     "}\n" +
     "```\n\n").repeat(5000),
 
-    // 9. LINKS:
+    // 9. LINKS [Core Markdown]:
     smallLink: "[Link to Google](https://www.google.com/)",
     mediumLink: ("[Link to Google](https://www.google.com/) ".repeat(100)),
     largeLink: ("[Link to Google](https://www.google.com/) ".repeat(5000)),
 
-    // 10. IMAGES (CLOUDINARY):
+    // 10. IMAGES (CLOUDINARY) [Special use case specific to my CMDE Project]:
     smallImage: "![Image](https://res.cloudinary.com/dsduz3inl/image/upload/v1750292077/krusty_s5hekd.png)",
     mediumImage: ("![Image](https://res.cloudinary.com/dsduz3inl/image/upload/v1750292077/krusty_s5hekd.png) ".repeat(100)),
     largeImage:  ("![Image](https://res.cloudinary.com/dsduz3inl/image/upload/v1750292077/krusty_s5hekd.png) ".repeat(1000)),
     
-    // 11. BLOCKQUOTES:
+    // 11. BLOCKQUOTES [Core Markdown]:
     smallBlockQ: "> ihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream",
     mediumBlockQ: ("> ihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream\n".repeat(100)) + "> ihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream",
     largeBlockQ: ("> ihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream\n".repeat(5000)) + "> ihavenomouthandimustscreamihavenomouthandimustscreamihavenomouthandimustscream",
 
-    // 12. HARD BREAKS:
+    // 12. HARD BREAKS [Special use case, something I manually specified in my CMDE Project and Comrak w/ hardbreaks=true]:
     smallBreaks: "text\ntext",
     mediumBreaks: ("text\ntext\n".repeat(100)) + "text",
     largeBreaks: ("text\ntext\n".repeat(5000)) + "text",
 
-    // 13. LINE BREAKS:
+    // 13. HORIZONTAL LINES [Core Markdown]:
     smallLine: "---",
     mediumLine: ("---\n".repeat(100)) + "---",
     largeLine: ("---\n".repeat(5000)) + "---",
 
-    // 14. Mixed cases (and nested formatting):
+    // 14. Mixed cases (and nested formatting) [Core Markdown - I think? - having mixed styles]:
     smallMixed: "> # **~~Bold Strikethrough~~** with `inline code` and *italics*",
     mediumMixed: ("**~~Bold Strikethrough~~** with `inline code` and *italics* ".repeat(100)),
     largeMixed: ("**~~Bold Strikethrough~~** with `inline code` and *italics* ".repeat(5000)),
 
-    // 15. Escaped characters:
+    // 15. Escaped characters [Edge Cases]:
     smallEsc: "\\*not italics\\* \\*\\*not bold\\*\\*",
     medEsc: ("\\*not italics\\* \\*\\*not bold\\*\\* ".repeat(100)),
     largeEsc: ("\\*not italics\\* \\*\\*not bold\\*\\* ".repeat(5000)),
 
-    // 16. Table:
+    // 16. Table [Core Markdown - pretty sure]:
     tableV1: "| Col A | Col B |\n|-------|-------|\n| 1     | 2     |\n| 3     | 4     |",
     tableV2: "| Left   | Center | Right |\n|--------|:------:|------:|\n| A      | B      | C     |\n| 10     | 20     | 30    |",
     tableV3: "| Feature      | Description            |\n|--------------|------------------------|\n| **Bold**     | Text in **bold**        |\n| *Italics*    | Text in *italics*       |\n| `Code`       | Inline `code` snippet   |\n| ~~Strike~~   | ~~Strikethrough~~ text  |",
     tableV4: "| Name | Age | Note |\n|------|-----|------|\n| John | 30  |      |\n| Ann  |     | N/A  |",
 
-    // 17. Going to test a proper 
+    // 17. Going to test a proper sample Markdown document:
     sampleMDFile: 
     `# SAMPLE MARKDOWN FILE TEST:
     \nHere is some **bold text** and some *italic text*, and even **_bold italic text_** all together.
@@ -216,9 +216,9 @@ document.getElementById("benchmarksBtn").addEventListener("click", () => {
         // Averaging the results:
         results.push({
             testName: testName,
-            comrakSpeed: avg(comrakTimes).toFixed(2),
-            markedSpeed: avg(markedTimes).toFixed(2),
-            markdownItSpeed: avg(markdownItTimes).toFixed(2),
+            comrakSpeed: avg(comrakTimes),
+            markedSpeed: avg(markedTimes),
+            markdownItSpeed: avg(markdownItTimes),
         });
     }
 
@@ -241,9 +241,9 @@ document.getElementById("benchmarksBtn").addEventListener("click", () => {
         resTable +=
         `<tr>
             <td><button class="unitTestBtn">${res.testName}</button></td>
-            <td>${res.comrakSpeed}<b>ms</b></td>
-            <td>${res.markedSpeed}<b>ms</b></td>
-            <td>${res.markdownItSpeed}<b>ms</b></td>
+            <td>${res.comrakSpeed.toFixed(2)}<b>ms</b></td>
+            <td>${res.markedSpeed.toFixed(2)}<b>ms</b></td>
+            <td>${res.markdownItSpeed.toFixed(2)}<b>ms</b></td>
         </tr>`;
         finalComrakTimes.push(res.comrakSpeed);
         finalMarkedTimes.push(res.markedSpeed);
@@ -253,9 +253,10 @@ document.getElementById("benchmarksBtn").addEventListener("click", () => {
     document.getElementById("bmResWrapper").innerHTML = resTable;
 
     document.getElementById("resSummary").innerHTML = 
-    `<b>Comrak (RUST)</b> Average Runtime: ${avg(finalComrakTimes).toFixed(2)}<br>
-    <b>Marked (JavaScript)</b> Average Runtime: ${avg(finalMarkedTimes).toFixed(2)}<br>
-    <b>Markdown-It (JavaScript)</b> Average Runtime: ${avg(finalMDItTimes).toFixed(2)}<br>`;
+    `<b>Comrak (RUST)</b> Average Runtime (ms): ${avg(finalComrakTimes).toFixed(2)}<br>
+    <b>Marked (JavaScript)</b> Average Runtime (ms): ${avg(finalMarkedTimes).toFixed(2)}<br>
+    <b>Markdown-It (JavaScript)</b> Average Runtime (ms): ${avg(finalMDItTimes).toFixed(2)}<br>`;
+    // TO-DO:+DEBUG: ^ Keeps coming out as NaN, fix this later.
 });
 
 // Event listeners for the buttons inside the table that gets generated after pressing the benchmarksBtn button (they'll "bubble up to bmResWrapper"):
