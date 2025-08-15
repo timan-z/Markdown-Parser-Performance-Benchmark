@@ -96,7 +96,7 @@ Data used to generate these charts were taken from [**Test Results #1**](./docum
 4. **paragraphs**:
 ![paraRes](./docUtility/savedPlots/paragraphsTest.svg)
 
-These Line Charts are simply rough plottings to demonstrate the general trend of scaling behavior and to illustrate that it clearly favors Comrak. Of course, these are **bold** rigorous proofs nor formal complexity analysis, just observational takeaways from my testing. (Yes, markdown-it is quite competitive, however, if you look at the values in the Test Result, you will see that Comrak is typically faster. The difference is often a matter of miliseconds so it is neglible to human eyes, however **clearly the difference becomes noticeable with certain larger inputs**).
+These Line Charts are simply rough plottings to demonstrate the general trend of scaling behavior and to illustrate that it clearly favors Comrak. Of course, these are **not** rigorous proofs nor formal complexity analysis, just observational takeaways from my testing. (Yes, markdown-it is quite competitive, however, if you look at the values in the Test Result, you will see that Comrak is typically faster. The difference is often a matter of miliseconds so it is neglible to human eyes, however **clearly the difference becomes noticeable with certain larger inputs**).
 
 ### In Summary - Growth Patterns:
 - **Comrak:** Consistently linear with input size.
